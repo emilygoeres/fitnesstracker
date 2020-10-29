@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Fitness Tracker</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <style media="screen">
+        body {
+            text-align: center;
+            background-color:#53565A;
+        }
+        
+        /* .primary {
+            color: #64edbd;
+        } */
+        
+        h1 {
+            font-size: 70px;
+            color:coral;
+        }
+        
+        h2,
+        h3 {
+            color: coral;
+        }
+        
+        .delete {
+            margin-left: 20px;
+            color:cornflowerblue;
+            cursor: pointer;
+            text-align: right;
+        }
+        
+        input {
+            width: 400px;
+            height: 50px;
+            margin-left: auto;
+            margin-right: auto;
+            font-size: 42px;
+            background-color: cornflowerblue;
+            color:#53565A;
+        }
+        
+        textarea {
+            width: 400px;
+            height: 400px;
+            margin-left: auto;
+            margin-right: auto;
+            font-size: 24px;
+            background-color:cornflowerblue;
+            color: #53565A;
+        }
+        
+        .data-title {
+            cursor: pointer;
+            font-size: 24px;
+        }
+        
+        #results {
+            width: 400px;
+            height: 200px;
+            overflow: auto;
+            margin-left: auto;
+            margin-right: auto;
+            background-color: cornflowerblue;
+            color:#53565A;
+        }
+        
+        #action-button {
+            display: inline-block;
+        }
+        
+        #buttons {
+            margin: 20px;
+        }
+
+        #user-input {
+            color:coral;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Fitness Tracker</h1>
+    <!-- <h2>Status: <span id="status" class="primary">Creating</span></h2> -->
+    <h3>Create a new workout by submitting its title and content below</h3>
+    <h3>Click on a workout to edit its title or content</h3>
+    <div id="user-input">
+        <p>New Workout</p>
+        <input type="text" id="title" />
+        <br>
+        <p>Excercises</p>
+        <textarea id="workout"></textarea>
+        <div id="buttons">
+            <div id="action-button">
+                <button id="make-new">Submit</button>
+            </div>
+            <button id="clear-all">Delete All Workouts</button>
+        </div>
+    </div>
+
+    <div id="results"></div>
+    <script src="app.js"></script>
+</body>
+
+</html>
