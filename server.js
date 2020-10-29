@@ -1,4 +1,4 @@
-// Rows 1-19 connect to NPM packages and Mongo
+// Rows 1-19 installed NPM packages and connected to Mongo
 const express = require("express");
 const mongojs = require("mongojs");
 const logger = require("morgan");

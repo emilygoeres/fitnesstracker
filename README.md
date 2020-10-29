@@ -39,7 +39,8 @@ Remove a Workout
 1. Install all npm packages. Modify the config.json to work with your own sql.  
     
 ## Steps
-
+1. Intalled NPM packages and connected to mongo
+2. Created add workout, Delete workouts, add to existing workout buttons
 
 ## Author
 
