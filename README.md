@@ -8,7 +8,7 @@ Don't let Covid 19 get the best of you, take advantage of this fitness app to ad
 1. [Description](#-Description)
 1. [Technologies](#Technologies)
 1. [Installation](#Installation)
-1. [Contributing](#Contributing)
+1. [Steps](#Steps)
 1. [Authors](#Authors)
 1. [License](#License)
 
@@ -38,8 +38,8 @@ Remove a Workout
 1. Ensure server.js is enabled in the directory to which you have saved this repository. 
 1. Install all npm packages. Modify the config.json to work with your own sql.  
     
-## Contributing
-Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change. Please make sure to update tests as appropriate.
+## Steps
+
 
 ## Author
 
