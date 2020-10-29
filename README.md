@@ -6,11 +6,10 @@ Don't let Covid 19 get the best of you, take advantage of this fitness app to ad
 
 ## Table of Contents
 1. [Description](#-Description)
+1. [Technologies](#Technologies)
 1. [Installation](#Installation)
-1. [Usage](#Usage)
 1. [Contributing](#Contributing)
 1. [Authors](#Authors)
-1. [Questions](#Questions)
 1. [License](#License)
 
 ## Visuals 
@@ -38,9 +37,6 @@ Remove a Workout
 1. Clone this repository to your local machine. 
 1. Ensure server.js is enabled in the directory to which you have saved this repository. 
 1. Install all npm packages. Modify the config.json to work with your own sql.  
-
-## Usage
-Anyone can use freely, according to the terms of the license.
     
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change. Please make sure to update tests as appropriate.
@@ -49,14 +45,7 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 
 [Emily Goeres](https://github.com/emilygoeres)
 
-## Questions
-Please direct questions to:
-Github account emilygoeres
-
-
 ## License 
-
-![GitHub](https://img.shields.io/github/license/emilygoeres/Personality-Quiz) 
 
 MIT License
 

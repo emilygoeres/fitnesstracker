@@ -1,3 +1,4 @@
+// Rows 1-19 connect to NPM packages and Mongo
 const express = require("express");
 const mongojs = require("mongojs");
 const logger = require("morgan");
@@ -17,14 +18,17 @@ const collections = ["workout"];
 
 const db = mongojs(databaseUrl, collections);
 
+// This will display an error in the console if something is wrong in your code
 db.on("error", error => {
   console.log("Database Error:", error);
 });
 
+// This connects the server to the index.html page
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname + "./public/index.html"));
 });
 
+// This will allow you to submit a new workout
 app.post("/submit", (req, res) => {
   console.log(req.body);
 
@@ -37,6 +41,7 @@ app.post("/submit", (req, res) => {
   });
 });
 
+// This will allow you to view all of the existing workouts that the user has created
 app.get("/all", (req, res) => {
   db.notes.find({}, (error, data) => {
     if (error) {
@@ -47,6 +52,7 @@ app.get("/all", (req, res) => {
   });
 });
 
+// This allos the user to find a specific workout
 app.get("/find/:id", (req, res) => {
   db.notes.findOne(
     {
@@ -62,6 +68,7 @@ app.get("/find/:id", (req, res) => {
   );
 });
 
+// This will allow the user to update a specific workout
 app.post("/update/:id", (req, res) => {
   db.notes.update(
     {
@@ -84,6 +91,7 @@ app.post("/update/:id", (req, res) => {
   );
 });
 
+// This will allow the user to delete a specific workout
 app.delete("/delete/:id", (req, res) => {
   db.notes.remove(
     {
@@ -99,6 +107,7 @@ app.delete("/delete/:id", (req, res) => {
   );
 });
 
+// This will allow the user to delete all workouts
 app.delete("/clearall", (req, res) => {
   db.notes.remove({}, (error, response) => {
     if (error) {
@@ -109,6 +118,7 @@ app.delete("/clearall", (req, res) => {
   });
 });
 
+// This allows the user to open the webpage
 app.listen(3000, () => {
   console.log("App running on port 3000!");
 });
