@@ -9,7 +9,7 @@ const results = document.getElementById("results");
 const status = document.getElementById("status");
 
 function getResults() {
-    clearTodos();
+    clearWorkout();
     fetch("/all")
         .then(function(response) {
             if (response.status !== 200) {
@@ -17,7 +17,7 @@ function getResults() {
                 return;
             }
             response.json().then(function(data) {
-                newTodoSnippet(data);
+                newWorkout(data);
             });
         })
         .catch(function(err) {
@@ -25,7 +25,7 @@ function getResults() {
         });
 }
 
-function newTodoSnippet(res) {
+function newWorkout(res) {
     for (var i = 0; i < res.length; i++) {
         let data_id = res[i]["_id"];
         let title = res[i]["title"];
@@ -39,9 +39,9 @@ function newTodoSnippet(res) {
     }
 }
 
-function clearTodos() {
-    const todoList = document.getElementById("results");
-    todoList.innerHTML = "";
+function clearWorkout() {
+    const excercise = document.getElementById("results");
+    excercise.innerHTML = "";
 }
 
 function resetTitleAndWorkout() {

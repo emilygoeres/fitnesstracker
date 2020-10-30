@@ -119,6 +119,6 @@ app.delete("/clearall", (req, res) => {
 });
 
 // This allows the user to open the webpage
-app.listen(3000, () => {
-  console.log("App running on port 3000!");
+app.listen(PORT, () => {
+  console.log(`App running on port ${PORT}!`);
 });
