@@ -22,9 +22,7 @@ Add a Workout
 
 ![image](.png)
 
-Remove a Workout
 
-![image](.png)
 
 ## Technologies 
 * NoSQL

@@ -5,11 +5,11 @@ const Schema = mongoose.Schema;
 const workoutchema = new Schema({
     date: {
         type: Date,
-        default: Date.now()
+        default: Date.now
     },
     excercises: [
         {
-            type: {
+           excercisetype: {
                 type: String,
                 required: true
             },
@@ -29,6 +29,6 @@ const workoutchema = new Schema({
     ]
 });
 
-const Book = mongoose.model("Book", BookSchema);
+const workout = mongoose.model("workout", workoutchema);
 
-module.exports = Book;
+module.exports = workout;

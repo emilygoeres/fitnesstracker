@@ -1,172 +1,67 @@
-const actionBtn = document.getElementById("action-button");
-// new item
-const makeWorkout = document.getElementById("make-new");
-// clear all items
-const clear = document.getElementById("clear-all");
-// delete an item
-const results = document.getElementById("results");
+// const { $where } = require("../models/workout");
 
-const status = document.getElementById("status");
-
-function getResults() {
-    clearWorkout();
-    fetch("/all")
-        .then(function(response) {
-            if (response.status !== 200) {
-                console.log("Looks like there was a problem. Status Code: " + response.status);
-                return;
-            }
-            response.json().then(function(data) {
-                newWorkout(data);
-            });
+$("#make-new").on("click", function (event) {
+    event.preventDefault()
+    var newWorkout = {
+        excercisetype: $("#excercisetype").val(),
+        duration: $("#duration").val(),
+        caloriesBurned: $("#caloriesBurned").val(),
+        name: $("#name").val(),
+    }
+    console.log(newWorkout);
+    $.post("/api/newWorkout", newWorkout)
+        .then(function (response) {
+            console.log(response)
+            var id = response._id
+            $.ajax("/api/updateworkout/" + id,
+                {
+                    method: "PUT",
+                    data: newWorkout
+                })
+                .then(function (response) {
+                    console.log(response)
+                    location.reload()
+                })
+            // location.reload()
         })
-        .catch(function(err) {
-            console.log("Fetch Error :-S", err);
-        });
-}
+})
 
-function newWorkout(res) {
-    for (var i = 0; i < res.length; i++) {
-        let data_id = res[i]["_id"];
-        let title = res[i]["title"];
-        let todoList = document.getElementById("results");
-        snippet = `
-      <p class="data-entry">
-      <span class="dataTitle" data-id=${data_id}>${title}</span>
-      <span onClick="delete" class="delete" data-id=${data_id}>x</span>;
-      </p>`;
-        todoList.insertAdjacentHTML("beforeend", snippet);
+$.get("/api/getWorkout")
+    .then(function (response) {
+        console.log(response)
+        if (response.length != 0) {
+            var previousworkout = response[response.length - 1]
+            $("#updateexcercise").attr("workoutid", previousworkout._id)
+            for (let i = 0; i < previousworkout.excercises.length; i++) {
+                $("#previousworkout").append(`
+            <tr><td>${previousworkout.excercises[i].name}</td>
+            <td>${previousworkout.excercises[i].excercisetype}</td>
+            <td>${previousworkout.excercises[i].duration}</td>
+            <td>${previousworkout.excercises[i].caloriesBurned}</td>
+            `)
+            }
+        } else {
+            $("#updateexcercise").hide()
+        }
+    })
+
+$("#updateexcercise").on("click", function (event) {
+    event.preventDefault()
+    var newWorkout = {
+        excercisetype: $("#excercisetype").val(),
+        duration: $("#duration").val(),
+        caloriesBurned: $("#caloriesBurned").val(),
+        name: $("#name").val(),
     }
-}
-
-function clearWorkout() {
-    const excercise = document.getElementById("results");
-    excercise.innerHTML = "";
-}
-
-function resetTitleAndWorkout() {
-    const Workout = document.getElementById("workout");
-    Workout.value = "";
-    const title = document.getElementById("title");
-    title.value = "";
-}
-
-function updateTitleAndWorkout(data) {
-    const Workout = document.getElementById("Workout");
-    Workout.value = data.Workout;
-    const title = document.getElementById("title");
-    title.value = data.title;
-}
-
-getResults();
-
-clear.addEventListener("click", function(e) {
-    if (e.target.matches("#clear-all")) {
-        element = e.target;
-        data_id = element.getAttribute("data-id");
-        fetch("/clearall", {
-                method: "delete"
-            })
-            .then(function(response) {
-                if (response.status !== 200) {
-                    console.log("Looks like there was a problem. Status Code: " + response.status);
-                    return;
-                }
-                clearTodos();
-            })
-            .catch(function(err) {
-                console.log("Fetch Error :-S", err);
-            });
-    }
-});
-
-results.addEventListener("click", function(e) {
-    if (e.target.matches(".delete")) {
-        element = e.target;
-        data_id = element.getAttribute("data-id");
-        fetch("/delete/" + data_id, {
-                method: "delete"
-            })
-            .then(function(response) {
-                if (response.status !== 200) {
-                    console.log("Looks like there was a problem. Status Code: " + response.status);
-                    return;
-                }
-                element.parentNode.remove();
-                resetTitleAndWorkout();
-                let newButton = `
-      <button id='make-new'>Submit</button>`;
-                actionBtn.innerHTML = newButton;
-            })
-            .catch(function(err) {
-                console.log("Fetch Error :-S", err);
-            });
-    } else if (e.target.matches(".dataTitle")) {
-        element = e.target;
-        data_id = element.getAttribute("data-id");
-        status.innerText = "Editing"
-        fetch("/find/" + data_id, { method: "get" })
-            .then(function(response) {
-                return response.json();
-            })
-            .then(function(data) {
-                updateTitleAndWorkout(data);
-                let newButton = `<button id='updater' data-id=${data_id}>Update</button>`;
-                actionBtn.innerHTML = newButton;
-            })
-            .catch(function(err) {
-                console.log("Fetch Error :-S", err);
-            });
-    }
-});
-
-actionBtn.addEventListener("click", function(e) {
-    if (e.target.matches("#updater")) {
-        updateBtnEl = e.target;
-        data_id = updateBtnEl.getAttribute("data-id");
-        const title = document.getElementById("title").value;
-        const Workout = document.getElementById("Workout").value;
-        fetch("/update/" + data_id, {
-                method: "post",
-                headers: {
-                    Accept: "application/json, text/plain, */*",
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({
-                    title,
-                    Workout
-                })
-            })
-            .then(function(response) {
-                return response.json();
-            })
-            .then(function(data) {
-                element.innerText = title
-                resetTitleAndWorkout();
-                let newButton = `<button id='make-new'>Submit</button>`;
-                actionBtn.innerHTML = newButton;
-                status.innerText = "Creating"
-            })
-            .catch(function(err) {
-                console.log("Fetch Error :-S", err);
-            });
-    } else if (e.target.matches("#make-new")) {
-        element = e.target;
-        data_id = element.getAttribute("data-id");
-        fetch("/submit", {
-                method: "post",
-                headers: {
-                    Accept: "application/json, text/plain, */*",
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({
-                    title: document.getElementById("title").value,
-                    Workout: document.getElementById("Workout").value,
-                    created: Date.now()
-                })
-            })
-            .then(res => res.json())
-            .then(res => newTodoSnippet([res]));
-        resetTitleAndWorkout();
-    }
-});
+    let id = $("#updateexcercise").attr("workoutid")
+    console.log(newWorkout, id);
+    $.ajax("/api/updateworkout/" + id,
+        {
+            method: "PUT",
+            data: newWorkout
+        })
+        .then(function (response) {
+            console.log(response)
+            location.reload()
+        })
+})
