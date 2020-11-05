@@ -1,7 +1,7 @@
 # Fitness Tracker
 
 ## Description
-### Deployed link: 
+### Deployed link: https://egfitnesstracker.herokuapp.com/
 Don't let Covid 19 get the best of you, take advantage of this fitness app to add a new workout, delete a workout, add info to an existing workout and track your workout to make your goals!
 
 ## Table of Contents
