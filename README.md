@@ -42,6 +42,7 @@ Add a Workout
 3. Created add workout, Delete workouts, add to existing workout buttons
 4. Added all items for to fill out to add a new workout
 5. Created the functionality to adjust the existing workout
+6. Added routes to add/update a workout
 
 ## Author
 

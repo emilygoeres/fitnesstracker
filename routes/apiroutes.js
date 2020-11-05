@@ -1,6 +1,6 @@
 var router = require("express").Router()
 var db = require("../models/workout")
-
+// All of the routes to add/ update a workout
 router.post("/api/newWorkout", function (req, res) {
     console.log(req.body)
     db.create(req.body).then(function (dbrecord) {
