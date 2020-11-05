@@ -1,5 +1,7 @@
 // const { $where } = require("../models/workout");
 
+// This will input the info that the user inputs for the new workout and the info will be saved
+// Once the user has inputted all the fields for the new workout, the new workout info will be saved
 $("#make-new").on("click", function (event) {
     event.preventDefault()
     var newWorkout = {
@@ -26,6 +28,7 @@ $("#make-new").on("click", function (event) {
         })
 })
 
+// This wil allow the user to update an existing workout, add to it or adjust the duration or an aspect of the workout
 $.get("/api/getWorkout")
     .then(function (response) {
         console.log(response)

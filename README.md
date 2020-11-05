@@ -39,6 +39,8 @@ Add a Workout
 ## Steps
 1. Intalled NPM packages and connected to mongo
 2. Created add workout, Delete workouts, add to existing workout buttons
+3. Added all items for to fill out to add a new workout
+4. Created the functionality to adjust the existing workout
 
 ## Author
 
