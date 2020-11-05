@@ -43,6 +43,7 @@ Add a Workout
 4. Added all items for to fill out to add a new workout
 5. Created the functionality to adjust the existing workout
 6. Added routes to add/update a workout
+7. Connected to Mongo, connected to the html page and allowed user to access webpage
 
 ## Author
 

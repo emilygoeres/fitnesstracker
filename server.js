@@ -13,7 +13,7 @@ mongoose.connect("mongodb://localhost/workouts", {
   useNewUrlParser: true,
   useFindAndModify: false
 })
-
+// connected the backend to the html page
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname + "./public/index.html"));
 });
