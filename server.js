@@ -2,7 +2,7 @@
 const express = require("express");
 const PORT = process.env.PORT || 8080
 const app = express();
-const mongoose = require ("mongoose") 
+const mongoose = require("mongoose")
 
 // const environment = 'development';
 // const environment = process.env.NODE_ENV || 'development';
@@ -12,16 +12,18 @@ app.use(express.json());
 
 app.use(express.static("public"));
 
-mongoose.connect("mongodb://localhost/workouts", {
-  useNewUrlParser: true,
-  useFindAndModify: false
-})
+mongoose.connect(
+  process.env.MONGODB_URI || "mongodb://localhost/workouts",
+  {
+    useNewUrlParser: true,
+    useFindAndModify: false
+  })
 // connected the backend to the html page
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname + "./public/index.html"));
 });
 
-var apiroutes=require("./routes/apiroutes")
+var apiroutes = require("./routes/apiroutes")
 app.use(apiroutes)
 
 // This allows the user to open the webpage
