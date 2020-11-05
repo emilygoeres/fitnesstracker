@@ -14,7 +14,7 @@ Don't let Covid 19 get the best of you, take advantage of this fitness app to ad
 
 ## Visuals 
 
-![fitnesstracker](https://github.com/emilygoeres/fitnesstracker/blob/main/fitness.PNG
+![fitnesstracker](https://github.com/emilygoeres/fitnesstracker/blob/main/fitness.PNG)
 
 ## Technologies 
 * NoSQL
