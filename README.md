@@ -2,7 +2,7 @@
 
 ## Description
 ### Deployed link: https://egfitnesstracker.herokuapp.com/
-### Deployed Link: https://drive.google.com/file/d/1-XAT8Oc79o2i-m3acG4mLPja_KHGTECF/view
+<!-- ### Deployed Link: https://drive.google.com/file/d/1-XAT8Oc79o2i-m3acG4mLPja_KHGTECF/view -->
 Don't let Covid 19 get the best of you, take advantage of this fitness app to add a new workout, delete a workout, add info to an existing workout and track your workout to make your goals!
 
 ## Table of Contents
